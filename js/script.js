@@ -13,7 +13,11 @@ function logout() {
 }
 
 function delete_account() {
-    window.location.replace("php/delete.php");
+    window.location.replace("php/delete_user.php");
+}
+
+function delete_post(id) {
+    window.location.replace(`php/delete_post.php?id=${id}`);
 }
 
 form_list.forEach(function (form) {
