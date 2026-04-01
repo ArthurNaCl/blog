@@ -35,12 +35,28 @@
     <div class="content">
         <h1>Log in</h1>
 
-        <form action="php/login.php" method="POST">
+        <form action="php/login.php" method="POST" id="login">
             <p>Nome</p>
-            <input type="text" name="username">
+            <input type="text" name="username" id="username">
 
             <p>Senha</p>
-            <input type="password" name="password">
+            <input type="password" name="password" id="password">
+
+            <?php
+                if ($_SESSION['error'] == 1) {
+                    unset($_SESSION['error']);    
+                
+                    echo '<p class="error_message">Usuário inválido, tente novamente</p>';
+                }
+            ?>
+
+            <?php
+                if ($_SESSION['error'] == 2) {
+                    unset($_SESSION['error']);    
+                
+                    echo '<p class="error_message">Senha incorreta, tente novamente</p>';
+                }
+            ?>
 
             <input type="submit" value="Enviar" class="submit">
         </form>

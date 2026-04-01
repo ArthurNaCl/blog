@@ -35,21 +35,31 @@
     <div class="content">
         <h1>Sign in</h1>
 
-        <form action="php/signup.php" method="POST">
+        <form action="php/signup.php" method="POST" id="signup">
             <p>Nome</p>
-            <input type="text" name="username">
+            <input type="text" name="username" id="username">
 
             <p>Senha</p>
-            <input type="password" name="password">
+            <input type="password" name="password" id="password">
 
             <p>Confirmar Senha</p>
-            <input type="password" name="password_confirmation">
+            <input type="password" id="password_confirmation">
 
             <p>Idade</p>
-            <input type="number" name="age">
+            <input type="number" name="age" id="age">
 
             <p>Cor</p>
             <input type="color" name="color" class="color">
+
+            <p class="error_message invisible" id="error">A senha confirmada está diferente da senha</p>
+
+            <?php
+                if ($_SESSION['error'] == 1) {
+                    unset($_SESSION['error']);    
+                
+                    echo '<p class="error_message">Usuário já existente, tente novamente</p>';
+                }
+            ?>
 
             <input type="submit" value="Enviar" class="submit">
         </form>
