@@ -8,6 +8,10 @@ function go_to_config() {
     window.location.replace("config.php");
 }
 
+function go_to_post_form() {
+    window.location.replace("post_form.php");
+}
+
 function logout() {
     window.location.replace("php/logout.php");
 }

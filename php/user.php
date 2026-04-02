@@ -1,9 +1,11 @@
 <?php
-include 'php/database.php';
+include 'database.php';
 
 session_start();
 
-$id = $_SESSION['id'];
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+}
 
 $logged = isset($id);
 

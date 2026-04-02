@@ -6,32 +6,12 @@
     <title>Log in</title>
 
     <link rel="stylesheet" href="css/style.css">
-
-    <?php
-        include 'php/user.php';
-    ?>
 </head>
 <body>
-    <header>
-        <h1 onclick="go_to_home()">Meu Site</h1>
-
-        <div class="user">
-            <?php if ($logged): ?>
-                <div class="username">
-                    <div class="profile" style="background-color: <?= $user['color'] ?>;"></div>
-
-                    <h2><?= $user['username'] ?></h2>
-                </div>
-
-                <i class="fa-sharp fa-solid fa-gear" onclick="go_to_config()"></i>
-            <?php else: ?>
-                <a href="login_form.php">Log in</a>
-
-                <a href="signup_form.php">Sign up</a>
-            <?php endif ?>
-        </div>
-    </header>
-
+    <?php
+        include 'header.php';
+    ?>
+    
     <div class="content">
         <h1>Sign in</h1>
 
@@ -54,16 +34,22 @@
             <p class="error_message invisible" id="error">A senha confirmada está diferente da senha</p>
 
             <?php
-                if ($_SESSION['error'] == 1) {
-                    unset($_SESSION['error']);    
-                
-                    echo '<p class="error_message">Usuário já existente, tente novamente</p>';
+                if (isset($_SESSION['error'])) {
+                    if ($_SESSION['error'] == 1) {
+                        unset($_SESSION['error']);    
+                    
+                        echo '<p class="error_message">Usuário já existente, tente novamente</p>';
+                    }
                 }
             ?>
 
             <input type="submit" value="Enviar" class="submit">
         </form>
     </div>
+
+    <?php
+        include 'footer.php';
+    ?>
 
     <script src="https://kit.fontawesome.com/5703751366.js" crossorigin="anonymous"></script>
 
