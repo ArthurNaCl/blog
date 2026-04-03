@@ -10,8 +10,13 @@
     <?php
         include 'php/user.php';
 
-        $stmt = $db->query('SELECT posts.id as post_id, title, content, user_id, users.username, users.color FROM posts INNER JOIN users ON user_id = users.id ORDER BY posts.id DESC');
+        $stmt = $db->prepare('SELECT title, content, user_id FROM posts WHERE user_id = :id ORDER BY posts.id DESC');
+        $stmt->execute(['id' => $_GET['id']]);
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $stmt = $db->prepare('SELECT username, color FROM users WHERE id = :id');
+        $stmt->execute(['id' => $_GET['id']]);
+        $post_user = $stmt->fetch(PDO::FETCH_ASSOC);
     ?>
 </head>
 <body>
@@ -20,13 +25,19 @@
     ?>
 
     <div class="content">
+        <div class="banner" style="background-color: <?= $post_user['color'] ?>">
+            <div class="banner_username">
+                <h1><?= $post_user['username'] ?></h1>
+            </div>
+        </div>
+
         <?php foreach($posts as $post): ?>
             <section class="post">
                 <div class="post_header">
-                    <div class="username" onclick="go_to_user_page(<?= $post['user_id'] ?>)">
-                        <div class="profile" style="background-color: <?= $post['color'] ?>;"></div>
+                    <div class="username" onclick="go_to_user_page(<?= $_GET['id'] ?>)">
+                        <div class="profile" style="background-color: <?= $post_user['color'] ?>;"></div>
 
-                        <h2><?= $post['username'] ?></h2>
+                        <h2><?= $post_user['username'] ?></h2>
                     </div>
 
                     <?php

@@ -13,9 +13,9 @@
     ?>
     
     <div class="content">
-        <h1>Log in</h1>
+        <h1>Postar</h1>
 
-        <form action="php/post.php" method="POST" id="post">
+        <form action="php/add_post.php" method="POST" id="post">
             <p>Título</p>
             <input type="text" name="title" id="title">
 

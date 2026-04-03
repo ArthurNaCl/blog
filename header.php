@@ -15,7 +15,7 @@
 
         <div class="user">
             <?php if ($logged): ?>
-                <div class="username">
+                <div class="username" onclick="go_to_user_page(<?= $user['id'] ?>)">
                     <div class="profile" style="background-color: <?= $user['color'] ?>;"></div>
 
                     <h2><?= $user['username'] ?></h2>

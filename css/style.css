@@ -1,7 +1,7 @@
 body {
     margin: 0;
     overflow: hidden;
-    height: 100vh;
+    height: 100dvh;
 }
 
 h1, h2, p, a, input, textarea, button {
@@ -84,8 +84,25 @@ div.profile {
     border: 2px solid black;
     border-radius: 22px;
     margin-right: 20px;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
+}
+
+div.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+    width: 100%;
+}
+
+div.banner_username {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 100px;
+    border-radius: 25px;
+    background-color: #ffffff;
 }
 
 i {
@@ -115,6 +132,7 @@ button.post {
 button.red {
     background-color: #ff0000;
     color: #ffffff;
+    border: 2px solid black;
     border-radius: 10px;
     margin-top: 50px;
     width: 150px;
@@ -125,12 +143,14 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 70%;
 }
 
 input {
     border: 1px solid #000000;
     padding: 10px;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
 }
 
 input.color {
@@ -146,8 +166,10 @@ input.submit {
 }
 
 textarea {
+    padding: 10px;
     resize: none;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     height: 300px;
 }
 
@@ -162,14 +184,74 @@ p.error_message {
 
 section.post {
     background-color: #c7c7c7;
-    padding: 50px;
+    padding: 20px 50px;
     border-radius: 25px;
     margin: 50px 0;
-    width: 500px;
+    width: calc(80% - 100px);
+    max-width: 500px;
 }
 
 div.post_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media screen and (max-width: 600px) {  
+    h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 10px;
+    }
+
+    a {
+        font-size: 10px;
+    }
+
+    input {
+        font-size: 10px;
+    }
+
+    textarea {
+        font-size: 10px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+
+    i {
+        font-size: 15px;
+    }
+
+    div.profile {
+        border: 1px solid black;
+        border-radius: 16px;
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+    }
+
+    section.post {
+        margin: 25px 0;
+    }
+
+    div.banner {
+        padding: 50px 0;
+    }
+
+    div.banner_username {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 50px;
+        border-radius: 25px;
+        background-color: #ffffff;
+    }
 }

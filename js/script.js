@@ -9,7 +9,11 @@ function go_to_config() {
 }
 
 function go_to_post_form() {
-    window.location.replace("post_form.php");
+    window.location.replace("add_post_form.php");
+}
+
+function go_to_user_page(id) {
+    window.location.replace(`user_page.php?id=${id}`);
 }
 
 function logout() {
